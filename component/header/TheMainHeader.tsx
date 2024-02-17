@@ -6,6 +6,7 @@ import TextLogoIcon from "../icon/TextLogoIcon";
 import UserIcon from "../icon/UserIcon";
 import GoBackArrowIcon from "../icon/GoBackArrowIcon";
 import { useUser } from "../../utils/hooks/useUser";
+import UserDarkIcon from "../icon/UserDarkIcon";
 
 const TheMainHeader = () => {
   const path = usePathname();
@@ -38,7 +39,7 @@ const TheMainHeader = () => {
               <>
                 <TextLogoIcon />
                 <Text onClick={() => router.push("/mypage")} cursor={"pointer"}>
-                  <UserIcon />
+                  <UserDarkIcon />
                 </Text>
               </>
             )}

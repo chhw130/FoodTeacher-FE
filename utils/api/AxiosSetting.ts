@@ -1,7 +1,7 @@
 import axios from "axios";
 import { UserInfoType } from "../../component/template/SignupTemplate";
 import { redirect } from "next/navigation";
-import { UserPostDietData } from "@/app/main/page";
+import { UserPostDietData } from "@/app/maintest/page";
 import { LoginUserType } from "../hooks/useUser";
 
 export const instacne = axios.create({

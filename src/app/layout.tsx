@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { ChakraLayout } from "@/app/ChakraLayout";
 import QueryLayout from "./QueryLayout";
-import TheHeader from "../../component/header/TheHeader";
 import TheMainHeader from "../../component/header/TheMainHeader";
-import Script from "next/script";
 import GoogleAnalytics from "./GoogleAnalytics";
 import ResponsiveLayout from "./ResponsiveLayout";
+import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -50,10 +49,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <QueryLayout>
           <ChakraLayout>
-            <ResponsiveLayout>
-              <TheMainHeader />
-              {children}
-            </ResponsiveLayout>
+            <ResponsiveLayout>{children}</ResponsiveLayout>
           </ChakraLayout>
         </QueryLayout>
       </body>

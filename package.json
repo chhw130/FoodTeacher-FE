@@ -19,9 +19,12 @@
     "framer-motion": "^10.16.16",
     "lottie-react": "^2.4.0",
     "next": "13.5.6",
+    "postcss-custom-properties-fallback": "^1.0.2",
     "react": "^18",
+    "react-chatbot-kit": "^2.2.2",
     "react-dom": "^18",
     "react-hook-form": "^7.49.0",
+    "react-spring-bottom-sheet": "^3.4.1",
     "sharp": "^0.33.2"
   },
   "devDependencies": {

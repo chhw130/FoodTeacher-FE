@@ -88,12 +88,10 @@ const ChattingRoom = ({
         </VStack>
         <VStack
           w={"100%"}
-          // h={"50%"}
           alignItems={"flex-start"}
           spacing={"16px"}
           marginTop={"1vh"}
           paddingBottom={"15%"}
-          // overflow={"hidden"}
           overflowY={"scroll"}
           css={{
             "&::-webkit-scrollbar": {
