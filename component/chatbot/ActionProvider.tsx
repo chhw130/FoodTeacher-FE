@@ -11,6 +11,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
   const caloryCalAction = () => {
     const message = createChatBotMessage(
       "칼로리 계산은 먹은 음식들의 칼로리를 계산해주는 기능이에요. 무엇을 얼마나 먹었는지 자세히 알려주실수록 정확한 정보를 드릴 수 있어요 :) \n 예시 : 밥 한공기, 닭가슴살 200g 을 먹었어."
+      // {
+      //   delay: 5000,
+      // }
     );
     updateState([message], "calorie");
   };
@@ -21,10 +24,13 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
     const getDiet = async () => {
       try {
         const resData = await postUserDiet(params);
-        dietResponse.current = resData;
+        dietResponse.current = resData || [];
 
         const secondMessage = await createChatBotMessage(
-          dietResponse.current?.운동필요시간
+          dietResponse.current?.운동필요시간,
+          {
+            payload: { dietResponse: dietResponse.current },
+          }
         );
 
         updateState([secondMessage], dietResponse);
@@ -38,7 +44,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
 
     const message = createChatBotMessage(getDiet(), {
       widget: "dietResponse",
-      payload: { loading: isLoading },
+      payload: { dietResponse: dietResponse.current },
     });
 
     updateState([message], dietResponse);
@@ -73,9 +79,11 @@ const ActionProvider = ({ createChatBotMessage, setState, children }: any) => {
   };
 
   const updateState = (message: any, checker: any) => {
+    const newMessage = message[0];
+    newMessage.checker = checker;
     setState((prev: any) => ({
       ...prev,
-      messages: [...prev.messages, ...message],
+      messages: [...prev.messages, ...[newMessage]],
       checker,
     }));
   };

@@ -21,7 +21,12 @@ import { useState } from "react";
 
 const DietChattingMsgCart = (props: any) => {
   const router = useRouter();
-  const dietChecker = cloneDeep(props.state.checker.current);
+  const messageLength = props.state.messages.length;
+  const { checker } = props.state.messages[messageLength - 1];
+  const { payload } = props.state.messages[messageLength - 1];
+
+  const dietChecker = cloneDeep(checker.current);
+  console.log("console : ", payload);
 
   const [dietResponseData, setDietResponseData] = useState(dietChecker);
 

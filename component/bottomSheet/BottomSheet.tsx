@@ -1,6 +1,6 @@
 "use client";
 import { HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BottomSheet, BottomSheetRef } from "react-spring-bottom-sheet";
 import HealthIcon from "../icon/HealthIcon";
 import Chatbot from "react-chatbot-kit";
@@ -13,6 +13,18 @@ import "./chatbot.css";
 
 const TheBottomSheet = () => {
   const sheetRef = useRef<BottomSheetRef>(null);
+
+  const getMessageHistory = () => {
+    const messageHistory = JSON.parse(
+      localStorage.getItem("chat_messages") as string
+    );
+
+    // console.log("message", messageHistory?.messages);
+
+    return messageHistory?.messages || null;
+  };
+
+  const [message, setMessage] = useState(() => getMessageHistory());
 
   return (
     <>
@@ -53,6 +65,8 @@ const TheBottomSheet = () => {
         <Chatbot
           // @ts-ignore
           config={config}
+          // @ts-ignore
+          messageHistory={message}
           messageParser={MessageParser}
           actionProvider={ActionProvider}
           placeholderText="답변을 입력해주세요."
