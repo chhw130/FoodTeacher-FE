@@ -15,13 +15,13 @@ const TheBottomSheet = () => {
   const sheetRef = useRef<BottomSheetRef>(null);
 
   const getMessageHistory = () => {
-    const messageHistory = JSON.parse(
-      localStorage.getItem("chat_messages") as string
-    );
+    if (typeof window !== "undefined") {
+      const messageHistory = JSON.parse(
+        localStorage.getItem("chat_messages") as string
+      );
 
-    // console.log("message", messageHistory?.messages);
-
-    return messageHistory?.messages || null;
+      return messageHistory?.messages || null;
+    }
   };
 
   const [message, setMessage] = useState(() => getMessageHistory());
