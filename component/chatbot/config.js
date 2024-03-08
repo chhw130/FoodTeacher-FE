@@ -8,6 +8,7 @@ const config = {
   initialMessages: [
     createChatBotMessage(`안녕하세요 메뉴를 선택해주세요!`, {
       widget: "overview",
+      delay: 0,
     }),
   ],
   customComponents: {
